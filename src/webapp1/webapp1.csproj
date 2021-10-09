@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLib1\ClassLib1.csproj" />
+    <ProjectReference Include="..\ClassLib2\ClassLib2.csproj" />
+    <ProjectReference Include="..\ClassLib3\ClassLib3.csproj" />
+    <ProjectReference Include="..\ClassLib4\ClassLib4.csproj" />
+    <ProjectReference Include="..\ClassLib5\ClassLib5.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
