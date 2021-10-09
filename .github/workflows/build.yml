@@ -21,6 +21,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name : list csproj files
+      working-directory : "."
+      run : "find . -name *.csproj"
+
+    - name : ls 
+      working-directory : "."
+      run : "ls -la"
+
+    - name: Build the Docker image
+      working-directory : "."    
+      run: docker build --tag my-image-name:$(date +%s) .
+
+
     - name : ls 
       working-directory : "."
       run : "ls -la"
