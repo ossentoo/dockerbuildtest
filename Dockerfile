@@ -1,12 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
 
-COPY . .
-RUN mkdir -p /tars
+COPY src/*/*.csproj ./
+
 RUN find . -name '*.csproj' | xargs tar cvf /tars/csprojFiles.tar
 
 RUN ls -la /tars
 
-COPY /tars/csprojFiles.tar .
 RUN tar -xvf csprojFiles.tar
 
 RUN dotnet restore src/webapp1/webapp1.csproj
