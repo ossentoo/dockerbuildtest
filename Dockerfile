@@ -4,3 +4,6 @@ RUN mkdir -p /tars
 RUN find . -name *.csproj | xargs tar cvf /tars/csprojFiles.tar
 
 RUN ls -la /tars
+
+COPY /tars/csprojFiles.tar .
+RUN tar -xvf csprojFiles.tar

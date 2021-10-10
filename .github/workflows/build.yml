@@ -33,7 +33,6 @@ jobs:
       working-directory : "."    
       run: docker build --tag my-image-name:$(date +%s) .
 
-
     - name : ls 
       working-directory : "."
       run : "ls -la"
