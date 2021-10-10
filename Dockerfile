@@ -7,3 +7,5 @@ RUN ls -la /tars
 
 COPY /tars/csprojFiles.tar .
 RUN tar -xvf csprojFiles.tar
+
+RUN dotnet restore src/webapp1/webapp1.csproj
