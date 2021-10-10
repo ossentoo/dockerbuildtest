@@ -3,7 +3,15 @@ WORKDIR /sln
 
 # RUN mkdir -p tars
 COPY src/*/*.csproj ./
-RUN for file in $(ls *.csproj); do mkdir -p src/${file%.*}/ && mv $file src/${file%.*}/; done
+COPY src/*.sln ./
+
+# Move copied csproj file into appropriate project directories
+RUN cat webapp.sln \
+| grep "\.csproj" \
+| awk '{print $4}' \
+| sed -e 's/[",]//g' \
+| sed 's#\\#/#g' \
+| xargs -I {} sh -c 'mkdir -p $(dirname {}) && mv $(basename {}) $(dirname {})/'
 
 # RUN find . -name '*.csproj' | xargs tar cvf /tars/csprojFiles.tar
 
@@ -11,7 +19,8 @@ RUN for file in $(ls *.csproj); do mkdir -p src/${file%.*}/ && mv $file src/${fi
 
 # RUN tar -xvf tars/csprojFiles.tar
 RUN ls -la 
-RUN dotnet restore src/webapp1/webapp1.csproj
+RUN ls -la webapp1
+RUN dotnet restore webapp1/webapp1.csproj
 
-RUN dotnet build src/webapp1/webapp1.csproj --no-restore
+RUN dotnet build webapp1/webapp1.csproj --no-restore
 
