@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace ClassLib1
+namespace ClassLib3
 {
-    public class Class1
+    public class Class3
     {
-        public Class1()
+
+        public Class3()
         {
             Console.WriteLine("Hello");
         }
